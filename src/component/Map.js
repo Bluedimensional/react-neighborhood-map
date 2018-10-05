@@ -40,8 +40,8 @@ export default class Map extends Component {
 			  isMarkerShown
 			  googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgtzCcU3cMjtTQJ03SRVa1-CNoPn7HkpA"
 			  loadingElement={<div style={{ height: `100%` }} />}
-			  containerElement={<div style={{ height: `400px` }} />}
-			  mapElement={<div style={{ height: `100%` }} />}
+			  containerElement={<div style={{ height: `100%`, width: `75%` }} />}
+			  mapElement={<div style={{ height: `100%`}} />}
 			/>
 		);
 	}
