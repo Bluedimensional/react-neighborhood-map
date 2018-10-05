@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import SquareAPI from './API/';
-import Map from "./component/Map";
+import Map from './component/Map';
 
 class App extends Component {
   constructor(){
@@ -13,12 +13,26 @@ class App extends Component {
        zoom: 12
     };
   }
+  closeAllMarkers = () => {
+    const markers = this.state.markers.map(marker => {
+      marker.isOpen = false;
+      return marker;
+    })
+    this.setState({ markers: Object.assign(this.state.markers, markers)});
+  }
+  handleMarkerClick = (marker) => {
+    this.closeAllMarkers();
+    marker.isOpen = true;
+    this.setState({markers: Object.assign(this.state.markers, marker)});
+    SquareAPI.getVenueDetails(marker.id)
+      .then(res => console.log(res));
+  };
 
   componentDidMount(){
     SquareAPI.search({
       near:"Nashville, TN",
-      query: "karaoke",
-      limit: 5
+      query: "coffee",
+      limit: 10
     }).then(results => {
         const { venues } = results.response;
         const { center } = results.response.geocode.feature.geometry;
@@ -27,7 +41,8 @@ class App extends Component {
             lat: venue.location.lat,
             lng: venue.location.lng,
             isOpen: false,
-            isVisibile: true
+            isVisible: true,
+            id: venue.id
           };
         });
         this.setState({ venues, center, markers });
@@ -37,7 +52,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Map {...this.state} />
+        <Map {...this.state}
+        handleMarkerClick={this.handleMarkerClick}/>
       </div>
     );
   }
