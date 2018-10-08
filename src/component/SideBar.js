@@ -6,13 +6,21 @@ export default class Sidebar extends Component {
 		super();
 		this.state = {
 			query: "",
+			venues: []
 		};
 	}
 	handleFilterVenues = () => {
-
-	}
+		if(this.state.query.trim() !== "") {
+			const venues = this.props.venues.filter(venue => venue.name
+				.toLowerCase()
+				.includes(this.state.query.toLowerCase()))
+			return venues;
+		}
+		return this.props.venues;
+	};
 	handleChange = e => {
 		this.setState({ query: e.target.value });
+
 		const markers = this.props.venues.map(venue => {
 			const isMatched = venue.name.toLowerCase().includes(e.target.value.toLowerCase());
 			// Get the marker associated with each venue
@@ -30,9 +38,17 @@ export default class Sidebar extends Component {
 	render() {
 		return(
 			<div className="sidebar">
-				<input type={"search"} id={"search"} placeholder={"Filter venues"} onChange={this.handleChange}/>
-				<VenueList {...this.props} handleListItemClick={this.props.handleListItemClick} />
+				<input
+				type={"search"}
+				id={"search"}
+				placeholder={"Filter venues"}
+				onChange={this.handleChange}
+				/>
+				<VenueList
+					{...this.props}
+					venues={this.handleFilterVenues()}
+					handleListItemClick={this.props.handleListItemClick} />
 			</div>
-			)
+		);
 	}
 }
