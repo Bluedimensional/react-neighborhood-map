@@ -52,8 +52,10 @@ class App extends Component {
         const { center } = results.response.geocode.feature.geometry;
         const markers = venues.map(venue => {
           return {
-            lat: parseFloat('venue.location.lat'),
-            lng: parseFloat('venue.location.lng'),
+            // lat: parseFloat('venue.location.lat'),
+            // lng: parseFloat('venue.location.lng'),
+            lat: venue.location.lat,
+            lng: venue.location.lng,
             isOpen: false,
             isVisible: true,
             id: venue.id
