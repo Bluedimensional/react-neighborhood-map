@@ -24,3 +24,6 @@ desktop.ini
 
 # notepad
 notepad.js
+
+# API keys
+config.js
