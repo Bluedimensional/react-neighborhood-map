@@ -42,10 +42,11 @@ class App extends Component {
     const marker = this.state.markers.find(marker => marker.id === venue.id)
     this.handleMarkerClick(marker)
   }
+
   componentDidMount(){
     SquareAPI.search({
       near:"Nashville, TN",
-      query: "coffee",
+      query: "yoga",
       limit: 10
     }).then(results => {
         const { venues } = results.response;
@@ -58,10 +59,11 @@ class App extends Component {
             isVisible: true,
             id: venue.id
           };
-        });
+        })
         this.setState({ venues, center, markers });
-        console.log(results);
-    });
+    }).catch(error =>{
+      console.log("Error: " + error)
+    })
   }
   render() {
     return (
