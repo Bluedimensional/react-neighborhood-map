@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import SquareAPI from './API/';
 import Map from './component/Map';
-import SideBar from './component/SideBar';
+import SideBar from  './component/Sidebar';
 
 class App extends Component {
   constructor(){
@@ -52,8 +52,6 @@ class App extends Component {
         const { center } = results.response.geocode.feature.geometry;
         const markers = venues.map(venue => {
           return {
-            // lat: parseFloat('venue.location.lat'),
-            // lng: parseFloat('venue.location.lng'),
             lat: venue.location.lat,
             lng: venue.location.lng,
             isOpen: false,

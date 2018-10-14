@@ -8,7 +8,13 @@ const MyMapComponent = withScriptjs(
 	    defaultZoom={8}
 	    zoom={props.zoom}
 	    defaultCenter={{ lat: -36.186, lng: -87.066 }}
-	    center={props.center}
+	    // defaultCenter={
+
+	    // }
+	    center={{
+	    	lat: parseFloat(props.center.lat),
+	    	lng: parseFloat(props.center.lng)
+	    }}
 	  >
 	    {props.markers &&
 	    	props.markers.filter(marker => marker.isVisible).map((marker, idx, arr) => {
@@ -26,7 +32,7 @@ const MyMapComponent = withScriptjs(
 					venueInfo.bestPhoto && (
 					<InfoWindow>
 						<React.Fragment>
-							<img src={`${venueInfo.bestPhoto.prefix}cap300${venueInfo.bestPhoto.suffix}`} alt={venueInfo.name} />
+							<img src={`${venueInfo.bestPhoto.prefix}300x300${venueInfo.bestPhoto.suffix}`} alt={venueInfo.name} />
 						<p>{venueInfo.name}</p>
 						</React.Fragment>
 					</InfoWindow>

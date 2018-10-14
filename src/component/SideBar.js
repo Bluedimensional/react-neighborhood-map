@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import VenueList from "./VenueList";
+import VenueList from "./Venuelist";
 
 export default class Sidebar extends Component {
 	constructor() {
