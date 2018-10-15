@@ -3,6 +3,8 @@ import './App.css';
 import SquareAPI from './API/';
 import Map from './component/Map';
 import SideBar from  './component/Sidebar';
+import Navbar from './component/Navbar'
+// import { Button } from 'reactstrap'
 
 class App extends Component {
   constructor(){
@@ -68,9 +70,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <SideBar {...this.state} handleListItemClick={this.handleListItemClick}/>
-        <Map {...this.state}
-        handleMarkerClick={this.handleMarkerClick}/>
+        <Navbar/>
+        <SideBar {...this.state} handleListItemClick={this.handleListItemClick}/>
+          <Map {...this.state}
+          handleMarkerClick={this.handleMarkerClick}/>
+          
       </div>
     );
   }

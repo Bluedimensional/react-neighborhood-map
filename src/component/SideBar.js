@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import VenueList from "./Venuelist";
+// import { Button, Grid, Row, Col } from 'react-bootstrap';
 
 export default class Sidebar extends Component {
 	constructor() {
@@ -48,6 +49,7 @@ export default class Sidebar extends Component {
 					{...this.props}
 					venues={this.handleFilterVenues()}
 					handleListItemClick={this.props.handleListItemClick} />
+					
 			</div>
 		);
 	}
