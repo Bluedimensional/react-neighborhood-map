@@ -28,6 +28,8 @@ notepad.js
 # API keys
 .env
 
+#
+Error.js
 
 # misc
 ThemeSwitcher.js
