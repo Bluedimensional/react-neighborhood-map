@@ -65,7 +65,7 @@ class App extends Component {
         })
         this.setState({ venues, center, markers });
         console.log(process.env.REACT_APP_FOURSQUARE_CLIENT_ID)
-    }).catch(error =>{
+    }).catch(error => {
       console.log("Error: " + error)
       // Create new alert element
       const newAlert = document.createElement('div');
