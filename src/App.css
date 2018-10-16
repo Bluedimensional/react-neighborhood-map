@@ -90,3 +90,11 @@ li img {
 .footer img {
   margin: 0 15px 0 15px;
 }
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
+}
