@@ -5,7 +5,6 @@ import Map from './component/Map';
 import SideBar from  './component/Sidebar';
 import Navbar from './component/Navbar'
 import Footer from './component/Footer'
-// import { Button } from 'reactstrap'
 
 class App extends Component {
   constructor(){
@@ -65,8 +64,20 @@ class App extends Component {
           };
         })
         this.setState({ venues, center, markers });
+        console.log(process.env.REACT_APP_FOURSQUARE_CLIENT_ID)
     }).catch(error =>{
       console.log("Error: " + error)
+      // Create new alert element
+      const newAlert = document.createElement('div');
+      // Set attributes to be boostrap alert element
+      newAlert.setAttribute("class", "alert alert-warning")
+      newAlert.setAttribute("role", "alert")
+      // Update content of new alert element
+      newAlert.innerHTML = 'Warning: Data retrieval from API source Foursquare failed. ';
+      // Get header element and append new alert.
+      document.getElementsByTagName("header")[0].appendChild(newAlert);
+
+      
     })
   }
   render() {
