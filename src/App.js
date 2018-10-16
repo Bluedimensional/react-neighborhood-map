@@ -46,10 +46,10 @@ class App extends Component {
     this.handleMarkerClick(marker)
   }
 
-  componentDidMount(){
+  searchVenues = (query) => {
     SquareAPI.search({
       near:"Nashville, TN",
-      query: "yoga", // TODO: instead of "yoga", will be one of three: yoga, juice, meditation. The navbar links will choose which of the three, as well as possibly buttons above the list items. Do i need an object or an array with those values? and then, what here? template literal?
+      query: query,
       limit: 10
     }).then(results => {
         const { venues } = results.response;
@@ -64,7 +64,7 @@ class App extends Component {
           };
         })
         this.setState({ venues, center, markers });
-        console.log(process.env.REACT_APP_FOURSQUARE_CLIENT_ID)
+        // console.log(process.env.REACT_APP_FOURSQUARE_CLIENT_ID)
     }).catch(error => {
       console.log("Error: " + error)
       // Create new alert element
@@ -79,6 +79,10 @@ class App extends Component {
 
       
     })
+  
+  }
+    componentDidMount(){
+      this.searchVenues("yoga");
   }
   render() {
     return (
