@@ -26,8 +26,10 @@ desktop.ini
 notepad.js
 
 # API keys
-config.js
+.env
 
+
+# misc
 ThemeSwitcher.js
 Header.js
 react-docs.js
