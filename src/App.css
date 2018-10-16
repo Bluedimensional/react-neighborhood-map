@@ -1,9 +1,9 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
   height: 100vh;
   width: 100vw;
-  display: flex;
-  flex-flow: row nowrap;
+  /* display: flex; */
+  /* flex-flow: row nowrap; */
 }
 
 .App-logo {
@@ -51,17 +51,18 @@ body {
 }
 
 .sidebar {
-  width: 35%;
+  /* width: 35%; */
 }
 
 #search {
   width: 100%;
-  padding: 10px;
+  padding: 5px;
   font-size: 1.2rem;
 }
 
 .venueList {
   padding:1.2rem;
+  text-align: left;
 }
 
 .listItem {
@@ -73,4 +74,19 @@ body {
   background-color: #ccc;
   display: flex;
   align-items: center;
+}
+
+/* List items icon */
+li img {
+  margin-right: 8px;
+}
+
+.footer {
+  padding: 1.2rem;
+  text-align: center;
+
+}
+
+.footer img {
+  margin: 0 15px 0 15px;
 }

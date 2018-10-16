@@ -28,7 +28,7 @@ export default class Example extends React.Component {
   }
   render() {
     return (
-      <div>
+      <header>
         <Navbar color="light" light expand="md">
           <NavbarBrand href="/">reactstrap</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
@@ -60,7 +60,7 @@ export default class Example extends React.Component {
             </Nav>
           </Collapse>
         </Navbar>
-      </div>
+      </header>
     );
   }
 }

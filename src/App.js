@@ -4,6 +4,7 @@ import SquareAPI from './API/';
 import Map from './component/Map';
 import SideBar from  './component/Sidebar';
 import Navbar from './component/Navbar'
+import Footer from './component/Footer'
 // import { Button } from 'reactstrap'
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
        }
     };
   }
+
   closeAllMarkers = () => {
     const markers = this.state.markers.map(marker => {
       marker.isOpen = false;
@@ -26,6 +28,7 @@ class App extends Component {
     });
     this.setState({ markers: Object.assign(this.state.markers, markers) });
   };
+
   handleMarkerClick = marker => {
     this.closeAllMarkers();
     marker.isOpen = true;
@@ -38,7 +41,6 @@ class App extends Component {
         console.log(newVenue);
       });
   };
-
 
   handleListItemClick = venue =>{
     const marker = this.state.markers.find(marker => marker.id === venue.id)
@@ -69,11 +71,17 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
+      <div className="App container-fluid">
         <Navbar/>
+      <div className="row">
         <SideBar {...this.state} handleListItemClick={this.handleListItemClick}/>
+        <div className="col-sm-9">
           <Map {...this.state}
           handleMarkerClick={this.handleMarkerClick}/>
+        
+        </div>
+      </div>
+      <Footer/>
           
       </div>
     );

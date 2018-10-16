@@ -38,7 +38,7 @@ export default class Sidebar extends Component {
 	};
 	render() {
 		return(
-			<div className="sidebar">
+			<div className="sidebar col-sm-3">
 				<input
 				type={"search"}
 				id={"search"}
