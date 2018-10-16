@@ -49,7 +49,7 @@ class App extends Component {
   componentDidMount(){
     SquareAPI.search({
       near:"Nashville, TN",
-      query: "yoga",
+      query: "yoga", // TODO: instead of "yoga", will be one of three: yoga, juice, meditation. The navbar links will choose which of the three, as well as possibly buttons above the list items. 
       limit: 10
     }).then(results => {
         const { venues } = results.response;
