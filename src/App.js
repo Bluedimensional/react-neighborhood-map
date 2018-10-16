@@ -82,22 +82,36 @@ class App extends Component {
   
   }
     componentDidMount(){
-      this.searchVenues("yoga");
+      this.searchVenues();
+         // Get navbar button #juice and store in const
+   const juiceButton = document.getElementById("juice");
+   // Listen for click on juiceButton then call function passing juice
+   juiceButton.addEventListener("click", this.searchVenues("juice"));
   }
+
+  queryButtons = () => {
+         // Get navbar button #juice and store in const
+   const yogaButton = document.getElementById("yoga");
+   // Listen for click on yogaButton then call function passing yoga
+   yogaButton.addEventListener("click", this.searchVenues("yoga"));
+  }
+
+
+
   render() {
     return (
       <div className="App container-fluid">
         <Navbar/>
-      <div className="row">
-        <SideBar {...this.state} handleListItemClick={this.handleListItemClick}/>
-        <div className="col-sm-9">
-          <Map {...this.state}
-          handleMarkerClick={this.handleMarkerClick}/>
-        
+        <div className="row">
+          <div className="col-xs-3">
+            <SideBar {...this.state} handleListItemClick={this.handleListItemClick}/>
+          </div>
+          <div className="col-md-9 full-height">
+            <Map {...this.state}
+            handleMarkerClick={this.handleMarkerClick}/>
+          </div>
         </div>
-      </div>
-      <Footer/>
-          
+        <Footer/>
       </div>
     );
   }
