@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
+import './css/App.css';
+import './css/Fonts.css'
 import SquareAPI from './API/';
 import Map from './component/Map';
 import SideBar from  './component/Sidebar';
