@@ -38,7 +38,7 @@ export default class Sidebar extends Component {
 	};
 	render() {
 		return(
-			<div className="sidebar col-sm-3">
+			<div>
 				<input
 				type={"search"}
 				id={"search"}
@@ -49,7 +49,6 @@ export default class Sidebar extends Component {
 					{...this.props}
 					venues={this.handleFilterVenues()}
 					handleListItemClick={this.props.handleListItemClick} />
-					
 			</div>
 		);
 	}
