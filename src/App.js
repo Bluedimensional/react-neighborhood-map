@@ -83,20 +83,11 @@ class App extends Component {
   
   }
     componentDidMount(){
-      this.searchVenues();
+      this.searchVenues("juice+yoga+coffee");
          // Get navbar button #juice and store in const
-   const juiceButton = document.getElementById("juice");
-   // Listen for click on juiceButton then call function passing juice
-   juiceButton.addEventListener("click", this.searchVenues("juice"));
-  }
 
-  queryButtons = () => {
-         // Get navbar button #juice and store in const
-   const yogaButton = document.getElementById("yoga");
-   // Listen for click on yogaButton then call function passing yoga
-   yogaButton.addEventListener("click", this.searchVenues("yoga"));
+   
   }
-
 
   render() {
     return (
@@ -104,6 +95,9 @@ class App extends Component {
         <Navbar/>
         <div className="row">
           <div className="col-xs-3">
+            <button onClick ={() => this.searchVenues("juice")}>Juice</button>
+            <button onClick ={() => this.searchVenues("yoga")}>Yoga</button>
+            <button onClick ={() => this.searchVenues("coffee")}>Coffee</button>
             <SideBar {...this.state} handleListItemClick={this.handleListItemClick}/>
           </div>
           <div className="col-md-9 full-height">
