@@ -6,6 +6,7 @@ import Map from './component/Map';
 import SideBar from  './component/Sidebar';
 import Navbar from './component/Navbar'
 import Footer from './component/Footer'
+import Dropdown from './component/Dropdown'
 
 class App extends Component {
   constructor(){
@@ -82,11 +83,14 @@ class App extends Component {
     })
   
   }
-    componentDidMount(){
-      this.searchVenues("juice+yoga+coffee");
-         // Get navbar button #juice and store in const
 
-   
+  componentWillMount() {
+    console.log("Loading!")
+  }
+
+
+  componentDidMount(){
+    this.searchVenues("juice+yoga+coffee");
   }
 
   render() {
@@ -95,6 +99,7 @@ class App extends Component {
         <Navbar/>
         <div className="row">
           <div className="col-xs-3">
+            <Dropdown/>
             <button onClick ={() => this.searchVenues("juice")}>Juice</button>
             <button onClick ={() => this.searchVenues("yoga")}>Yoga</button>
             <button onClick ={() => this.searchVenues("coffee")}>Coffee</button>

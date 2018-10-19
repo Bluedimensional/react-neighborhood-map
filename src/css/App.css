@@ -60,9 +60,11 @@ body {
 }
 
 #search {
-  width: 100%;
+  width: 85%;
   padding: 5px;
   font-size: 1.2rem;
+  display: flex;
+  margin: 1rem auto 0;
 }
 
 #brand-text {
