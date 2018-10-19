@@ -11,6 +11,7 @@ export default class Example extends React.Component {
     };
   }
 
+  
   toggle() {
     this.setState(prevState => ({
       dropdownOpen: !prevState.dropdownOpen

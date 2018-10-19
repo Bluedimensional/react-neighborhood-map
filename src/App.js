@@ -6,7 +6,6 @@ import Map from './component/Map';
 import SideBar from  './component/Sidebar';
 import Navbar from './component/Navbar'
 import Footer from './component/Footer'
-import Dropdown from './component/Dropdown'
 
 class App extends Component {
   constructor(){
@@ -68,7 +67,7 @@ class App extends Component {
         this.setState({ venues, center, markers });
         // console.log(process.env.REACT_APP_FOURSQUARE_CLIENT_ID)
     }).catch(error => {
-      console.log("Error: " + error)
+      console.log(error)
       // Create new alert element
       const newAlert = document.createElement('div');
       // Set attributes to be boostrap alert element
@@ -78,8 +77,6 @@ class App extends Component {
       newAlert.innerHTML = 'Warning: Data retrieval from API source Foursquare failed. ';
       // Get header element and append new alert.
       document.getElementsByTagName("header")[0].appendChild(newAlert);
-
-      
     })
   
   }
@@ -87,7 +84,6 @@ class App extends Component {
   componentWillMount() {
     console.log("Loading!")
   }
-
 
   componentDidMount(){
     this.searchVenues("juice+yoga+coffee");
@@ -99,10 +95,7 @@ class App extends Component {
         <Navbar/>
         <div className="row">
           <div className="col-xs-3">
-            <Dropdown/>
-            <button onClick ={() => this.searchVenues("juice")}>Juice</button>
-            <button onClick ={() => this.searchVenues("yoga")}>Yoga</button>
-            <button onClick ={() => this.searchVenues("coffee")}>Coffee</button>
+            
             <SideBar {...this.state} handleListItemClick={this.handleListItemClick}/>
           </div>
           <div className="col-md-9 full-height">
