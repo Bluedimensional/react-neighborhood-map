@@ -6,8 +6,7 @@ import Map from "./component/Map";
 import SideBar from  "./component/Sidebar";
 import Navbar from "./component/Navbar"
 import Footer from "./component/Footer"
-
-class App extends Component {
+class App extends Component {git
   constructor(){
     super();
     this.state = {
@@ -47,11 +46,11 @@ class App extends Component {
     this.handleMarkerClick(marker)
   }
 
-  searchVenues = (query) => {
+  searchVenues = (query, limit) => {
     SquareAPI.search({
       near:"Nashville, TN",
       query: query,
-      limit: 10
+      limit: limit
     }).then(results => {
         const { venues } = results.response;
         const { center } = results.response.geocode.feature.geometry;
@@ -78,11 +77,10 @@ class App extends Component {
       // Get header element and append new alert.
       document.getElementsByTagName("header")[0].appendChild(newAlert);
     })
-  
   }
 
   componentDidMount(){
-    this.searchVenues("yoga+coffee");
+    this.searchVenues("yoga+coffee", "15");
   }
 
   render() {
@@ -91,6 +89,9 @@ class App extends Component {
         <Navbar/>
         <div className="row">
           <div className="col-xs-3">
+          <button className="btn btn-info btn-large" onClick ={() => this.searchVenues("yoga+coffee", "5")}>5</button>
+            <button  className="btn btn-info btn-large" onClick ={() => this.searchVenues("yoga+coffee", "10")}>10</button>
+            <button  className="btn btn-info btn-large" onClick ={() => this.searchVenues("yoga+coffee", "15")}>15</button>
             <SideBar {...this.state} handleListItemClick={this.handleListItemClick}/>
           </div>
           <div className="col-md-9 full-height">
