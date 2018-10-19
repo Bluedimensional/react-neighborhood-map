@@ -55,8 +55,8 @@ body {
   height: 100vh;
 }
 
-.sidebar {
-  /* width: 35%; */
+nav img {
+  width: 40px;
 }
 
 #search {

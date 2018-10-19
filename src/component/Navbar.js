@@ -5,6 +5,8 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
+  NavItem,
+  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -32,24 +34,15 @@ export default class Example extends React.Component {
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <UncontrolledDropdown nav inNavbar>
-
-                <DropdownToggle nav caret>
-                  Options
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    Option 1
-                  </DropdownItem>
-                  <DropdownItem>
-                    Option 2
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    Reset
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
+                <NavItem>
+                  <NavLink href="https://reactjs.org"><img alt="ReactJS: A JavaScript library for building user interfaces" src="images/React-icon.png"></img></NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="https://developer.foursquare.com"><img alt="Foursqaure Developers" src="images/foursquare-logo.png"></img></NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="https://github.com/reactstrap/reactstrap"><img src="images/Google-maps-logo.png" alt="Google Maps API"></img></NavLink>
+                </NavItem>
             </Nav>
           </Collapse>
         </Navbar>
