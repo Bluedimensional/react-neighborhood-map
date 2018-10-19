@@ -72,6 +72,10 @@ body {
   font-family: 'Lobster', cursive;
 }
 
+.secondary-branded {
+  font-family: 'Lobster', cursive;
+}
+
 .venueList {
   padding:1rem;
   text-align: left;
@@ -99,8 +103,15 @@ li img {
 
 }
 
-.footer img {
-  margin: 0 15px 0 15px;
+ /* Logos */
+footer img {
+  width: 50px;
+  margin: 0 auto 10px auto;
+}
+
+ /* Center footer logos and text */
+footer .col-sm-4 {
+  text-align: center;
 }
 
 /* Preloader  */
