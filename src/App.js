@@ -81,10 +81,8 @@ class App extends Component {
   
   }
 
-
-
   componentDidMount(){
-    this.searchVenues("juice+yoga+coffee");
+    this.searchVenues("yoga+coffee");
   }
 
   render() {
@@ -93,7 +91,6 @@ class App extends Component {
         <Navbar/>
         <div className="row">
           <div className="col-xs-3">
-            
             <SideBar {...this.state} handleListItemClick={this.handleListItemClick}/>
           </div>
           <div className="col-md-9 full-height">
