@@ -1,15 +1,5 @@
 import React, { Component } from 'react';
 import VenueList from "./Venuelist";
-import {
-	Collapse,
-	Navbar,
-	NavbarToggler,
-	NavbarBrand,
-	Nav,
-	NavItem,
-	NavLink,
-  } from 'reactstrap';
-// import { Button, Grid, Row, Col } from 'react-bootstrap';
 
 export default class Sidebar extends Component {
 	constructor() {

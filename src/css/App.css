@@ -126,6 +126,30 @@ footer .col-sm-4 {
   text-align: center;
 }
 
+/* Map infoWindows */
+.place {
+  /* display: flex; */
+  /* flex-wrap: nowrap; */
+  margin: 10px 0;
+  text-align: center;
+}
+
+.place img {
+  margin: 0 0 10px 0;
+}
+
+.place-details {
+
+}
+
+.venue-address, .venue-phone, .venue-rating, .venue-webpage {
+  margin: 0 0 5px 0;
+}
+
+h4.venue-name {
+  font-size: 1.2rem;
+}
+
 /* Preloader  */
 .loading {
   position: fixed;

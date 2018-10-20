@@ -8,9 +8,6 @@ const MyMapComponent = withScriptjs(
 	    defaultZoom={8}
 	    zoom={props.zoom}
 	    defaultCenter={{ lat: -36.186, lng: -87.066 }}
-	    // defaultCenter={
-
-	    // }
 	    center={{
 	    	lat: parseFloat(props.center.lat),
 	    	lng: parseFloat(props.center.lng)
@@ -32,14 +29,17 @@ const MyMapComponent = withScriptjs(
 					venueInfo.bestPhoto && (
 					<InfoWindow>
 						<React.Fragment>
-							<img src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`} alt={venueInfo.name} />
-						<p>{venueInfo.name}</p>
-						<p> {venueInfo.location['address']}</p>
-						{venueInfo.rating && <p> Rating: {venueInfo.rating}</p>}
-						{venueInfo.price && <p> Price: {venueInfo.price['message']}</p>}
-						<p> {venueInfo.description}</p>
-						<p> {venueInfo.url}</p>
-						{/* <p> {venueInfo.categories[]}</p> */}
+							<div className="place">
+								<img src={`${venueInfo.bestPhoto.prefix}100x100${venueInfo.bestPhoto.suffix}`} alt={venueInfo.name} />
+							<h4 className="venue-name">{venueInfo.name}</h4>
+							<p className="venue-address"> {venueInfo.location['address']}</p>
+							<p className="venue-phone"><a href="tel:{venueInfo.contact.phone}"> {venueInfo.contact.phone}</a></p>
+							<p className="venue-rating">{venueInfo.rating && <span>Rating: {venueInfo.rating}</span>}</p>
+							{venueInfo.price && <p> Price: {venueInfo.price['message']}</p>}
+							{/* <p> {venueInfo.description}</p> */}
+							<p className="venue-webpage"><a href="{venueInfo.url}">Website</a> </p>
+							{/* <p> {venueInfo.categories[]}</p> */}
+							</div>
 						</React.Fragment>
 					</InfoWindow>
 				)}
