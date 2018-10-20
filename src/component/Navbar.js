@@ -56,76 +56,12 @@ export default class Topnav extends React.Component {
     return (
       <div>
         <Navbar color="faded" light>
-          <NavbarBrand id="brand-text" href="/" className="mr-auto">Nashville Wellness</NavbarBrand>  
-          <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-          <Collapse isOpen={!this.state.collapsed} navbar>
-            <Nav navbar>
-              <NavItem>
-                <NavLink href="/components/">
-               
-			                </NavLink>
-              </NavItem>
-            </Nav>
-          </Collapse>
+          <NavbarBrand id="brand-text" href="/" className="mr-auto">Thirsty in Nashville</NavbarBrand>    
+          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+					  <span className="navbar-toggler-icon"></span>
+					</button>
         </Navbar>
-        <SideBar {...this.state} handleListItemClick={this.handleListItemClick}/>
       </div>
     );
   }
 }
-
-// export default class Example extends React.Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.toggle = this.toggle.bind(this);
-//     this.state = {
-//       isOpen: false
-//     };
-//   }
-//   toggle() {
-//     this.setState({
-//       isOpen: !this.state.isOpen
-//     });
-//   }
-//   render() {
-//     return (
-//       <header>
-//         {/* <Navbar color="light" light expand="md">
-//           <NavbarToggler onClick={this.toggle} />
-//           <Collapse isOpen={this.state.isOpen} navbar>
-//             <Nav className="ml-auto" navbar>
-//                 <NavItem>
-//                   <NavLink href="#resources">Resources Used</NavLink>
-//                 </NavItem>
-//                 <NavItem>
-//                   <NavLink href="https://reactjs.org"><img alt="ReactJS: A JavaScript library for building user interfaces" src="images/React-icon.png"></img></NavLink>
-//                 </NavItem>
-//                 <NavItem>
-//                   <NavLink href="https://developer.foursquare.com"><img alt="Foursqaure Developers" src="images/foursquare-logo.png"></img></NavLink>
-//                 </NavItem>
-//                 <NavItem>
-//                   <NavLink href="https://github.com/reactstrap/reactstrap"><img src="images/Google-maps-logo.png" alt="Google Maps API"></img></NavLink>
-//                 </NavItem>
-                
-//             </Nav>
-//           </Collapse>
-//         </Navbar> */}
-//         <Navbar color="faded" light>
-//           <NavbarBrand href="/" className="mr-auto">reactstrap</NavbarBrand>
-//           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
-//           <Collapse isOpen={!this.state.collapsed} navbar>
-//             <Nav navbar>
-//               <NavItem>
-//                 <NavLink href="/components/">Components</NavLink>
-//               </NavItem>
-//               <NavItem>
-//                 <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-//               </NavItem>
-//             </Nav>
-//           </Collapse>
-//         </Navbar>
-//       </header>
-//     );
-//   }
-// }

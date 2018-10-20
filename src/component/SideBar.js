@@ -47,14 +47,9 @@ export default class Sidebar extends Component {
 	};
 	render() {
 		return(
-			<div className="sidebar">
-				<nav className="navbar navbar-expand-lg navbar-light bg-light">
-					<a id="brand-text" className="navbar-brand" href="#">Nashville Yoga & Coffee</a>
-					<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-					<span className="navbar-toggler-icon"></span>
-					</button>
-
-					<div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+			<div>
+				<nav id="list-nav" className="navbar navbar-light bg-light">
+					<div className="navbar-collapse" id="navbarToggler">
 						<ul className="navbar-nav mr-auto mt-2 mt-lg-0">
 						</ul>
 							<input
