@@ -89,9 +89,7 @@ class App extends Component {git
         <Navbar/>
         <div className="row">
           <div className="col-xs-3">
-          <button className="btn btn-info btn-large" onClick ={() => this.searchVenues("yoga+coffee", "5")}>5</button>
-            <button  className="btn btn-info btn-large" onClick ={() => this.searchVenues("yoga+coffee", "10")}>10</button>
-            <button  className="btn btn-info btn-large" onClick ={() => this.searchVenues("yoga+coffee", "15")}>15</button>
+            <div id="demo"></div>
             <SideBar {...this.state} handleListItemClick={this.handleListItemClick}/>
           </div>
           <div className="col-md-9 full-height">

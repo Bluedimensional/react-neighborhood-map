@@ -35,7 +35,8 @@ const MyMapComponent = withScriptjs(
 							<img src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`} alt={venueInfo.name} />
 						<p>{venueInfo.name}</p>
 						<p> {venueInfo.location['address']}</p>
-						<p> {venueInfo.rating}</p>
+						{venueInfo.rating && <p> Rating: {venueInfo.rating}</p>}
+						{venueInfo.price && <p> Price: {venueInfo.price['message']}</p>}
 						<p> {venueInfo.description}</p>
 						<p> {venueInfo.url}</p>
 						{/* <p> {venueInfo.categories[]}</p> */}
