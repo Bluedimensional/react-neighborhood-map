@@ -63,6 +63,18 @@ nav img {
   font-family: lobster;
 }
 
+#list-nav {
+  opacity: 0.9;
+  display: flex;
+  color: #F9F9F9;
+  flex-flow: column;
+  max-width: 250px;
+  float: left;
+  margin: 0;
+  height: 100vh;
+  overflow: scroll;
+}
+
 #search {
   width: 85%;
   padding: 5px;

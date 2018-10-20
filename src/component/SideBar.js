@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
 import VenueList from "./Venuelist";
+import {
+	Collapse,
+	Navbar,
+	NavbarToggler,
+	NavbarBrand,
+	Nav,
+	NavItem,
+	NavLink,
+  } from 'reactstrap';
 // import { Button, Grid, Row, Col } from 'react-bootstrap';
 
 export default class Sidebar extends Component {
@@ -39,16 +48,27 @@ export default class Sidebar extends Component {
 	render() {
 		return(
 			<div className="sidebar">
-				<input
-				type={"search"}
-				id={"search"}
-				placeholder={"Filter venues"}
-				onChange={this.handleChange}
-				/>
-				<VenueList
-					{...this.props}
-					venues={this.handleFilterVenues()}
-					handleListItemClick={this.props.handleListItemClick} />
+				<nav className="navbar navbar-expand-lg navbar-light bg-light">
+					<a id="brand-text" className="navbar-brand" href="#">Nashville Yoga & Coffee</a>
+					<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+					<span className="navbar-toggler-icon"></span>
+					</button>
+
+					<div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+						<ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+						</ul>
+							<input
+								type={"search"}
+								id={"search"}
+								placeholder={"Filter venues"}
+								onChange={this.handleChange}
+							/>
+							<VenueList
+								{...this.props}
+								venues={this.handleFilterVenues()}
+								handleListItemClick={this.props.handleListItemClick} />
+					</div>
+				</nav>
 			</div>
 		);
 	}

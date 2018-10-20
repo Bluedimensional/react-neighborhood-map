@@ -4,8 +4,9 @@ import "./css/Fonts.css"
 import SquareAPI from "./API/";
 import Map from "./component/Map";
 import SideBar from  "./component/Sidebar";
-import Navbar from "./component/Navbar"
+import TopNav from "./component/Navbar"
 import Footer from "./component/Footer"
+import SidebarNav from './component/SidebarNav'
 class App extends Component {git
   constructor(){
     super();
@@ -86,11 +87,13 @@ class App extends Component {git
   render() {
     return (
       <div className="App container-fluid">
-        <Navbar/>
+        {/* <Navbar/> */}
+        {/* <TopNav/> */}
         <div className="row">
           <div className="col-xs-3">
+             <SideBar {...this.state} handleListItemClick={this.handleListItemClick}/>
             <div id="demo"></div>
-            <SideBar {...this.state} handleListItemClick={this.handleListItemClick}/>
+           
           </div>
           <div className="col-md-9 full-height">
             <Map {...this.state}
