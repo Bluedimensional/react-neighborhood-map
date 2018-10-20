@@ -80,7 +80,7 @@ class App extends Component {git
   }
 
   componentDidMount(){
-    this.searchVenues("yoga+coffee", "15");
+    this.searchVenues("yoga+coffee", "10");
   }
 
   render() {

@@ -32,8 +32,13 @@ const MyMapComponent = withScriptjs(
 					venueInfo.bestPhoto && (
 					<InfoWindow>
 						<React.Fragment>
-							<img src={`${venueInfo.bestPhoto.prefix}300x300${venueInfo.bestPhoto.suffix}`} alt={venueInfo.name} />
+							<img src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`} alt={venueInfo.name} />
 						<p>{venueInfo.name}</p>
+						<p> {venueInfo.location['address']}</p>
+						<p> {venueInfo.rating}</p>
+						<p> {venueInfo.description}</p>
+						<p> {venueInfo.url}</p>
+						{/* <p> {venueInfo.categories[]}</p> */}
 						</React.Fragment>
 					</InfoWindow>
 				)}

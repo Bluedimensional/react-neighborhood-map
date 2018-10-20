@@ -59,6 +59,10 @@ nav img {
   width: 40px;
 }
 
+.nav-item {
+  font-family: lobster;
+}
+
 #search {
   width: 85%;
   padding: 5px;
