@@ -1,14 +1,8 @@
 import React from 'react';
 import {
-  Collapse,
   Navbar,
-  NavbarToggler,
   NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
 } from 'reactstrap';
-import SideBar from './Sidebar'
 export default class Topnav extends React.Component {
   constructor(props) {
     super(props);
