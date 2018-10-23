@@ -3,7 +3,7 @@ import "./css/App.css";
 import "./css/Fonts.css"
 import SquareAPI from "./API/";
 import Map from "./component/Map";
-import SideBar from  "./component/Sidebar";
+import SideBar from  "./component/SideBar";
 import Navbar from "./component/Navbar"
 import Footer from "./component/Footer"
 class App extends Component {git
