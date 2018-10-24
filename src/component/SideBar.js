@@ -39,7 +39,7 @@ export default class Sidebar extends Component {
 		return(
 			<div>
 				<nav id="list-nav" className="navbar navbar-light bg-light">
-					<div className="navbar-collapse" id="navbarToggler">
+					<div className="show navbar-collapse" id="navbarToggler">
 						<ul className="navbar-nav mr-auto mt-2 mt-lg-0">
 						</ul>
 							<input
