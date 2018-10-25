@@ -2,7 +2,7 @@
 * ACKNOWLEDGEMENTS: Forrest Walker Connecting to Foursquare https://www.youtube.com/watch?v=Dj5hzKBxCBI&list=PL4rQq4MQP1crXuPtruu_eijgOUUXhcUCP&index=3
 *
 */
-import * as fsAPI from "../data/credentials";
+import * as fsAPI from "../data/API_credentials";
 
 class Helper {
 	static baseURL() {

@@ -6,7 +6,7 @@ import Map from "./component/Map";
 import SideBar from  "./component/SideBar";
 import Navbar from "./component/Navbar"
 import Footer from "./component/Footer"
-import * as googleMapsAPI from "./data/credentials";
+import * as googleMapsAPI from "./data/API_credentials";
 
 const APIs = {
   // Google Maps

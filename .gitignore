@@ -28,6 +28,7 @@ notepad.js
 # API keys
 credentials.js
 src/data/credentials.js
+API_credentials.js
 
 #
 Error.js
