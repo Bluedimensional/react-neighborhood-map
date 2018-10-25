@@ -29,17 +29,14 @@ const MyMapComponent = withScriptjs(
 					venueInfo.bestPhoto && (
 					<InfoWindow>
 						<React.Fragment>
-							<div className="place">
-								<img src={`${venueInfo.bestPhoto.prefix}100x100${venueInfo.bestPhoto.suffix}`} alt={venueInfo.name} />
-							<h4 className="venue-name">{venueInfo.name}</h4>
-							<p className="venue-address"> {venueInfo.location['address']}</p>
-							<p className="venue-phone"><a href="tel:{venueInfo.contact.phone}"> {venueInfo.contact.phone}</a></p>
-							<p className="venue-rating">{venueInfo.rating && <span>Rating: {venueInfo.rating}</span>}</p>
-							{venueInfo.price && <p> Price: {venueInfo.price['message']}</p>}
-							{/* <p> {venueInfo.description}</p> */}
-							<p className="venue-webpage"><a href="{venueInfo.url}">Website</a> </p>
-							{/* <p> {venueInfo.categories[]}</p> */}
-							</div>
+							<img src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`} alt={venueInfo.name} />
+						<p>{venueInfo.name}</p>
+						<p> {venueInfo.location['address']}</p>
+						{venueInfo.rating && <p> Rating: {venueInfo.rating}</p>}
+						{venueInfo.price && <p> Price: {venueInfo.price['message']}</p>}
+						<p> {venueInfo.description}</p>
+						<p> {venueInfo.url}</p>
+						{/* <p> {venueInfo.categories[]}</p> */}
 						</React.Fragment>
 					</InfoWindow>
 				)}
@@ -54,12 +51,10 @@ const MyMapComponent = withScriptjs(
 
 export default class Map extends Component {
 	render() {
-
 		return (
 			<MyMapComponent
 			{...this.props}
 			  isMarkerShown
-			  googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgtzCcU3cMjtTQJ03SRVa1-CNoPn7HkpA"
 			  loadingElement={<div style={{ height: `100%` }} />}
 			  containerElement={<div className="col" style={{ height: `100%`, width: `100%` }} />}
 			  mapElement={<div style={{ height: `100%`}} />}

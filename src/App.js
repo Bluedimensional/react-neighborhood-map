@@ -6,7 +6,22 @@ import Map from "./component/Map";
 import SideBar from  "./component/SideBar";
 import Navbar from "./component/Navbar"
 import Footer from "./component/Footer"
-class App extends Component {git
+import * as googleMapsAPI from "./data/credentials";
+
+const APIs = {
+  // Google Maps
+  googleMaps: {
+      // using the `params` attribute allows us to string multiple query
+      // parameters together later on without manual concatenation
+      params: new URLSearchParams({
+        // API stored in separate file
+          key: `${googleMapsAPI.key}`,
+      })
+  },
+}
+
+// Map component
+class App extends Component {
   constructor(){
     super();
     this.state = {
@@ -14,6 +29,7 @@ class App extends Component {git
        markers: [],
        center: [],
        zoom: 14,
+       googleMapURL: `${googleMapsAPI.url}${APIs.googleMaps.params}`,
        updateSuperState: obj => {
         this.setState(obj);
        }
@@ -91,7 +107,7 @@ class App extends Component {git
         <div className="row">
              <SideBar {...this.state} handleListItemClick={this.handleListItemClick}/>
           <div className="col full-height">
-            <Map {...this.state}
+            <Map {...this.state} 
             handleMarkerClick={this.handleMarkerClick}/>
           </div>
         </div>
