@@ -2,18 +2,19 @@
 * ACKNOWLEDGEMENTS: Forrest Walker Connecting to Foursquare https://www.youtube.com/watch?v=Dj5hzKBxCBI&list=PL4rQq4MQP1crXuPtruu_eijgOUUXhcUCP&index=3
 *
 */
+import * as fsAPI from "../data/credentials";
 
 class Helper {
 	static baseURL() {
 		return "https://api.foursquare.com/v2";
 	}
-
+	// Client ID, client secret, and version stored in credentials file
 	static auth(){
 		const keys = {
-			client_id:"1FBUUYE1FOUN1FZ14UDOSYY2SAV41CPFIIGGVRKUMZJ3BACC",
-			client_secret:"EWZO0YLIZST1NVZOEDIZCECCNWFODUIYVIWXINRDVKJYGAO5",
-			v:"20180930"
-		};
+			client_id: `${fsAPI.client_id}`,
+			client_secret: `${fsAPI.client_secret}`,
+			v: `${fsAPI.client_version}`
+		}
 		return Object.keys(keys).map(key => `${key}=${keys[key]}`)
 		.join("&");
 	}
