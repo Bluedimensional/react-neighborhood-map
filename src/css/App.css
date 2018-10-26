@@ -55,8 +55,13 @@ nav img {
   width: 40px;
 }
 
-.nav-item {
+.nav-item, .sub-heading {
   font-family: lobster;
+}
+
+.sub-heading {
+  padding-left: 1rem;
+  padding-bottom: 1rem;
 }
 
 #list-nav {

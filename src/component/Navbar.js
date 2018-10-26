@@ -55,6 +55,7 @@ export default class Topnav extends React.Component {
 					  <span className="navbar-toggler-icon"></span>
 					</button>
         </Navbar>
+          <h5 className="sub-heading">Juice and coffee in music city</h5>
       </div>
     );
   }
