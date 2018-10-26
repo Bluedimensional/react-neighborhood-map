@@ -41,3 +41,6 @@ scratch.html
 
 # images and Photoshop
 /src/image/psd*
+
+# peers code
+errorsALX.js
