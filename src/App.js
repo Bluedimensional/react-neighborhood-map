@@ -7,12 +7,22 @@ import SideBar from "./component/SideBar";
 import Navbar from "./component/Navbar"
 import Footer from "./component/Footer"
 import * as googleMapsAPI from "./data/API_credentials";
+import ErrorBoundary from "./helpers/errorBoundaries"
 
+// Detect authentication failure, such as invalied or missing Google Maps API key
+window.gm_authFailure = () => {
+  const newAlert = document.createElement("div");
+      newAlert.setAttribute("class", "alert alert-warning")
+      newAlert.setAttribute("role", "alert")
+      document.getElementById("navbar").appendChild(newAlert);
+      newAlert.innerHTML = "Google Maps API error";
+  // alert("Please check your Google API key")
+}
+
+// Google Maps API
 const APIs = {
-  // Google Maps
   googleMaps: {
-    // using the `params` attribute allows us to string multiple query
-    // parameters together later on without manual concatenation
+    // `params` attribute allows us to string multiple query together
     params: new URLSearchParams({
       // API stored in separate file
       key: `${googleMapsAPI.key}`,
@@ -24,6 +34,7 @@ const APIs = {
 class App extends Component {
   constructor() {
     super();
+    // Initialize state
     this.state = {
       venues: [],
       markers: [],
@@ -64,18 +75,14 @@ class App extends Component {
   }
 
   handleError = (error) => {
-    this.setState({error})
-    console.log(error)
-    // const errorToString = error.toString()
-    // console.error(errorToString)
-    // Alert element
+    this.setState({ error })
+    // Alert element for foursquare API error
     const newAlert = document.createElement("div");
       newAlert.setAttribute("class", "alert alert-warning")
       newAlert.setAttribute("role", "alert")
-      newAlert.innerHTML = "API error";
       document.getElementById("navbar").appendChild(newAlert);
+      newAlert.innerHTML = "Foursquare API error";
   }
-
 
   searchVenues = (query, limit) => {
     SquareAPI.search({
@@ -103,10 +110,7 @@ class App extends Component {
     })
   }
 
-  testFunction = (test) => {
-    console.log("test")
-  }
-  
+
   componentDidMount() {
     this.searchVenues("juice+coffee", "10");
   }
@@ -119,8 +123,10 @@ class App extends Component {
         <div className="row">
           <SideBar {...this.state} handleListItemClick={this.handleListItemClick} />
           <div className="col full-height">
-            <Map {...this.state}
-              handleMarkerClick={this.handleMarkerClick} />
+            <ErrorBoundary>
+              <Map {...this.state}
+                handleMarkerClick={this.handleMarkerClick} />
+            </ErrorBoundary>
           </div>
         </div>
         <Footer />
