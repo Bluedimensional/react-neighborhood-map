@@ -49,7 +49,7 @@ export default class Topnav extends React.Component {
   render() {
     return (
       <div>
-        <Navbar color="faded" light>
+        <Navbar id="navbar" color="faded" light>
           <NavbarBrand id="brand-text" href="/" className="mr-auto">Thirsty in Nashville</NavbarBrand>    
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
 					  <span className="navbar-toggler-icon"></span>
