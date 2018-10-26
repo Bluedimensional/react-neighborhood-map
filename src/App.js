@@ -19,6 +19,8 @@ window.gm_authFailure = () => {
   // alert("Please check your Google API key")
 }
 
+// {null.map(errorTestSwitch => errorTestSwitch)}
+
 // Google Maps API
 const APIs = {
   googleMaps: {
