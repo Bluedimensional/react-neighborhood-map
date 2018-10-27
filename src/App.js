@@ -53,6 +53,7 @@ class App extends Component {
   }
 
   closeAllMarkers = () => {
+    // Map over each marker and set isOpen to false
     const markers = this.state.markers.map(marker => {
       marker.isOpen = false;
       return marker;
@@ -62,6 +63,7 @@ class App extends Component {
 
   // Function for user marker click
   handleMarkerClick = marker => {
+    // Close all markers by mapping over all of them and setting each isOpen to false
     this.closeAllMarkers();
     marker.isOpen = true;
     this.setState({ markers: Object.assign(this.state.markers, marker) });
@@ -123,7 +125,8 @@ class App extends Component {
           <SideBar {...this.state} handleListItemClick={this.handleListItemClick} />
           <div className="col full-height">
             <ErrorBoundary>
-              <Map {...this.state}
+              <Map role="complementary" aria-label="map" {...this.state}
+                closeAllMarkers={this.closeAllMarkers}
                 handleMarkerClick={this.handleMarkerClick} />
             </ErrorBoundary>
           </div>
