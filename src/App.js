@@ -24,8 +24,6 @@ const alertMessage = (alertString) => {
   
 }
 
-// {null.map(errorTestSwitch => errorTestSwitch)}
-
 // Google Maps API
 const googleAPI = {
   googleMaps: {
