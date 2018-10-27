@@ -11,18 +11,23 @@ import ErrorBoundary from "./helpers/errorBoundaries"
 
 // Detect authentication failure, such as invalied or missing Google Maps API key
 window.gm_authFailure = () => {
+  alertMessage("Google Maps API error")
+}
+
+// Needs const since it is in global scope
+const alertMessage = (alertString) => {
   const newAlert = document.createElement("div");
-      newAlert.setAttribute("class", "alert alert-warning")
-      newAlert.setAttribute("role", "alert")
-      document.getElementById("navbar").appendChild(newAlert);
-      newAlert.innerHTML = "Google Maps API error";
-  // alert("Please check your Google API key")
+  newAlert.setAttribute("class", "alert alert-warning")
+  newAlert.setAttribute("role", "alert")
+  document.getElementById("navbar").appendChild(newAlert);
+  newAlert.innerHTML = alertString;
+  
 }
 
 // {null.map(errorTestSwitch => errorTestSwitch)}
 
 // Google Maps API
-const APIs = {
+const googleAPI = {
   googleMaps: {
     // `params` attribute allows us to string multiple query together
     params: new URLSearchParams({
@@ -42,7 +47,7 @@ class App extends Component {
       markers: [],
       center: [],
       zoom: 14,
-      googleMapURL: `${googleMapsAPI.url}${APIs.googleMaps.params}`,
+      googleMapURL: `${googleMapsAPI.url}${googleAPI.googleMaps.params}`,
       updateSuperState: obj => {
         this.setState(obj);
       }
@@ -79,11 +84,7 @@ class App extends Component {
   handleError = (error) => {
     this.setState({ error })
     // Alert element for foursquare API error
-    const newAlert = document.createElement("div");
-      newAlert.setAttribute("class", "alert alert-warning")
-      newAlert.setAttribute("role", "alert")
-      document.getElementById("navbar").appendChild(newAlert);
-      newAlert.innerHTML = "Foursquare API error";
+    alertMessage("Foursquare API error")
   }
 
   searchVenues = (query, limit) => {
@@ -112,7 +113,6 @@ class App extends Component {
     })
   }
 
-
   componentDidMount() {
     this.searchVenues("juice+coffee", "10");
   }
@@ -121,7 +121,6 @@ class App extends Component {
     return (
       <div className="App container-fluid">
         <Navbar />
-        {/* <TopNav/> */}
         <div className="row">
           <SideBar {...this.state} handleListItemClick={this.handleListItemClick} />
           <div className="col full-height">
