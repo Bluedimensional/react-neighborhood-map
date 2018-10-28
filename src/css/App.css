@@ -132,22 +132,23 @@ footer .col-sm-4 {
 }
 
 /* Map infoWindows */
-.place {
-  /* display: flex; */
-  /* flex-wrap: nowrap; */
-  margin: 10px 0;
+.gm-style-iw {
   text-align: center;
 }
 
-.place img {
-  margin: 0 0 10px 0;
+.venue-name {
+  font-family: 'Lobster', cursive;
 }
 
-.place-details {
+.venue-image {
+  margin: 15px 5px;
+}
+
+.venue-price {
 
 }
 
-.venue-address, .venue-phone, .venue-rating, .venue-webpage {
+.venue-address, .venue-phone, .venue-rating, .venue-url, .venue-price  {
   margin: 0 0 5px 0;
 }
 

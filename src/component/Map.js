@@ -31,13 +31,12 @@ const MyMapComponent = withScriptjs(
 								venueInfo.bestPhoto && (
 									<InfoWindow onCloseClick={() => props.closeAllMarkers()}>
 										<React.Fragment>
-											<img src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`} alt={venueInfo.name} />
-											<p>{venueInfo.name}</p>
-											<p> {venueInfo.location['address']}</p>
-											{venueInfo.rating && <p> Rating: {venueInfo.rating}</p>}
-											{venueInfo.price && <p> Price: {venueInfo.price['message']}</p>}
-											<p> {venueInfo.description}</p>
-											<p> {venueInfo.url}</p>
+											<img className="venue-image"src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`} alt={venueInfo.name} />
+											<h4 className="venue-name">{venueInfo.name}</h4>
+											<p className="venue-address"> {venueInfo.location['address']}</p>
+											{venueInfo.rating && <p className="venue-rating"> Rating: {venueInfo.rating}</p>}
+											{venueInfo.price && <p className="venue-price"> Price: {venueInfo.price['message']}</p>}
+											<p className="venue-url"><a href="{venueInfo.url}">Website</a></p>
 											{/* <p> {venueInfo.categories[]}</p> */}
 										</React.Fragment>
 									</InfoWindow>
