@@ -1,7 +1,17 @@
+/*
+ * React-based map listing Juice and Coffee venues in Nashville, TN, utilizing Foursquare and Google Maps APIs.
+ *
+ * Acknowledgements to Forrest Walker for his YouTube walkthrough: https://goo.gl/XrrXg9
+ * 
+ */
+
 import React, { Component } from "react";
+// Stylesheets
 import "./css/App.css";
 import "./css/Fonts.css"
+// API
 import SquareAPI from "./API/";
+// Basic components
 import Map from "./component/Map";
 import SideBar from "./component/SideBar";
 import Navbar from "./component/Navbar"
@@ -51,7 +61,7 @@ class App extends Component {
       }
     };
   }
-
+  // Function to close all markers
   closeAllMarkers = () => {
     // Map over each marker and set isOpen to false
     const markers = this.state.markers.map(marker => {
@@ -69,24 +79,25 @@ class App extends Component {
     this.setState({ markers: Object.assign(this.state.markers, marker) });
     const venue = this.state.venues.find(venue => venue.id === marker.id);
 
-    SquareAPI.getVenueDetails(marker.id).then(res => {
+    SquareAPI.getVenueDetails(marker.id)
+      .then(res => {
       const newVenue = Object.assign(venue, res.response.venue);
       this.setState({ venues: Object.assign(this.state.venues, newVenue) })
-      console.log(newVenue);
     });
   };
-
+  // Function to handle list item click
   handleListItemClick = venue => {
     const marker = this.state.markers.find(marker => marker.id === venue.id)
     this.handleMarkerClick(marker)
   }
 
+  // Function to handle error from Foursquare
   handleError = (error) => {
     this.setState({ error })
-    // Alert element for foursquare API error
     alertMessage("Foursquare API error")
   }
 
+  // Search query to Foursquare API
   searchVenues = (query, limit) => {
     SquareAPI.search({
       near: "Nashville, TN",
@@ -107,13 +118,13 @@ class App extends Component {
       this.setState({ venues, center, markers });
       // Error for foursquare API call failure
     }).catch(error => {
-      // console.log(error)
       // pass error message(s) to handelError()
       this.handleError(error)
     })
   }
-
+  // After mount of App component
   componentDidMount() {
+    // Pass these into Foursquare search query above
     this.searchVenues("juice+coffee", "10");
   }
 
