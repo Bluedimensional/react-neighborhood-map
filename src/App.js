@@ -19,6 +19,9 @@ import Footer from "./component/Footer"
 import * as googleMapsAPI from "./data/API_credentials";
 import ErrorBoundary from "./helpers/errorBoundaries"
 
+// Geolocation - snippet from MDN
+
+
 // Detect authentication failure, such as invalied or missing Google Maps API key
 window.gm_authFailure = () => {
   alertMessage("Google Maps API error")
@@ -98,9 +101,9 @@ class App extends Component {
   }
 
   // Search query to Foursquare API
-  searchVenues = (query, limit) => {
+  searchVenues = (near, query, limit) => {
     SquareAPI.search({
-      near: "Nashville, TN",
+      near: near,
       query: query,
       limit: limit
     }).then(res => {
@@ -125,9 +128,32 @@ class App extends Component {
   // After mount of App component
   componentDidMount() {
     // Pass these into Foursquare search query above
-    this.searchVenues("juice+coffee", "10");
+    this.searchVenues("Nashville, TN", "juice+coffee", "10");
+
+    // Geolocation
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+    
+    const success = (pos) => {
+      const crd = pos.coords;
+      
+      console.log('Your current position is:');
+      console.log(`Latitude : ${crd.latitude}`);
+      console.log(`Longitude: ${crd.longitude}`);
+      console.log(`More or less ${crd.accuracy} meters.`);
+    }
+    
+    function error(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
+    
+    navigator.geolocation.getCurrentPosition(success, error, options);
   }
 
+  
   render() {
     return (
       <div className="App container-fluid">
