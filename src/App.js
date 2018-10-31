@@ -57,6 +57,7 @@ class App extends Component {
       venues: [],
       markers: [],
       center: [],
+      defaultCenter: {lat: `${crd.latitude}`), lng: `${crd.latitude}`)},
       zoom: 14,
       googleMapURL: `${googleMapsAPI.url}${googleAPI.googleMaps.params}`,
       updateSuperState: obj => {
@@ -130,7 +131,7 @@ class App extends Component {
     // Pass these into Foursquare search query above
     this.searchVenues("Nashville, TN", "juice+coffee", "10");
 
-    // Geolocation
+    // Geolocation snippet based on MDN's example
     const options = {
       enableHighAccuracy: true,
       timeout: 5000,
@@ -144,6 +145,8 @@ class App extends Component {
       console.log(`Latitude : ${crd.latitude}`);
       console.log(`Longitude: ${crd.longitude}`);
       console.log(`More or less ${crd.accuracy} meters.`);
+
+      this.setState({defaultCenter: lat: `${crd.latitude}`), lng: `${crd.latitude}`)})
     }
     
     function error(err) {
@@ -151,6 +154,8 @@ class App extends Component {
     }
     
     navigator.geolocation.getCurrentPosition(success, error, options);
+
+    console.log(`${crd.latitude}`)
   }
 
   
@@ -162,7 +167,10 @@ class App extends Component {
           <SideBar {...this.state} handleListItemClick={this.handleListItemClick} />
           <div className="col full-height">
             <ErrorBoundary>
-              <Map role="complementary" aria-label="map" {...this.state}
+              <Map 
+                role="complementary" 
+                aria-label="map" 
+                {...this.state}
                 closeAllMarkers={this.closeAllMarkers}
                 handleMarkerClick={this.handleMarkerClick} />
             </ErrorBoundary>
