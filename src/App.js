@@ -57,7 +57,7 @@ class App extends Component {
       venues: [],
       markers: [],
       center: [],
-      defaultCenter: {lat: `${crd.latitude}`), lng: `${crd.latitude}`)},
+      defaultCenter: [],
       zoom: 14,
       googleMapURL: `${googleMapsAPI.url}${googleAPI.googleMaps.params}`,
       updateSuperState: obj => {
@@ -138,6 +138,7 @@ class App extends Component {
       maximumAge: 0
     };
     
+    // Success function for current position
     const success = (pos) => {
       const crd = pos.coords;
       
@@ -146,7 +147,7 @@ class App extends Component {
       console.log(`Longitude: ${crd.longitude}`);
       console.log(`More or less ${crd.accuracy} meters.`);
 
-      this.setState({defaultCenter: lat: `${crd.latitude}`), lng: `${crd.latitude}`)})
+      this.setState({defaultCenter: {lat: crd.latitude, lng: crd.longitude}})
     }
     
     function error(err) {
@@ -155,7 +156,7 @@ class App extends Component {
     
     navigator.geolocation.getCurrentPosition(success, error, options);
 
-    console.log(`${crd.latitude}`)
+    // console.log(`${crd.latitude}`)
   }
 
   
