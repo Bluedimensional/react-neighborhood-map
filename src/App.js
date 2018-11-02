@@ -102,11 +102,12 @@ class App extends Component {
   }
 
   // Search query to Foursquare API
-  searchVenues = (near, query, limit) => {
-    // SquareAPI.search({
-      near: near.city,
+  searchVenues = (query, limit) => {
+    SquareAPI.search({
+      // This works
+      // near: "Nashville, TN",
       // Foursquare docs say ll can be used but it doesn't work for me https://developer.foursquare.com/docs/api/venues/search
-      ll: 44.32, 37.22, 
+      ll: "36.04,-86.74",
       query: query,
       limit: limit
     }).then(res => {
@@ -131,7 +132,7 @@ class App extends Component {
   // After mount of App component
   componentDidMount() {
     // Pass these into Foursquare search query above
-    this.searchVenues({city: "Nashville, TN"}, "juice+coffee", "10");
+    this.searchVenues("juice+coffee", "10");
 
     // Geolocation snippet based on MDN's example
     const options = {
