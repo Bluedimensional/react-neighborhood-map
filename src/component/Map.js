@@ -34,6 +34,7 @@ const MyMapComponent = withScriptjs(
 											<img className="venue-image"src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`} alt={venueInfo.name} />
 											<h4 className="venue-name">{venueInfo.name}</h4>
 											<p className="venue-address"> {venueInfo.location['address']}</p>
+											<p className="venue-address">{venueInfo.contact['phone']}</p>
 											{venueInfo.rating && <p className="venue-rating"> Rating: {venueInfo.rating}</p>}
 											{venueInfo.price && <p className="venue-price"> Price: {venueInfo.price['message']}</p>}
 											<p className="venue-url"><a href="{venueInfo.url}">Website</a></p>
