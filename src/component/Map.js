@@ -10,10 +10,10 @@ const MyMapComponent = withScriptjs(
 			defaultZoom={8}
 			zoom={props.zoom}
 			defaultCenter={props.defaultCenter}
-			center={{
-				lat: parseFloat(props.center.lat),
-				lng: parseFloat(props.center.lng)
-			}}
+			// center={{
+			// 	lat: parseFloat(props.center.lat),
+			// 	lng: parseFloat(props.center.lng)
+			// }}
 		>
 			{props.markers &&
 				props.markers.filter(marker => marker.isVisible).map((marker, idx, arr) => {
