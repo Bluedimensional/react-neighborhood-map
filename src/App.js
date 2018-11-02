@@ -105,9 +105,9 @@ class App extends Component {
   searchVenues = (query, limit) => {
     SquareAPI.search({
       // This works
-      // near: "Nashville, TN",
+      near: "Nashville, TN",
       // Foursquare docs say ll can be used but it doesn't work for me https://developer.foursquare.com/docs/api/venues/search
-      ll: "36.04,-86.74",
+      // ll: "36.04,-86.74",
       query: query,
       limit: limit
     }).then(res => {
@@ -146,9 +146,8 @@ class App extends Component {
       const crd = pos.coords;
       
       console.log('Your current position is:');
-      console.log(`Latitude : ${crd.latitude}`);
-      console.log(`Longitude: ${crd.longitude}`);
-      console.log(`More or less ${crd.accuracy} meters.`);
+      console.log(`Lat: ${crd.latitude}`);
+      console.log(`Lng: ${crd.longitude}`);
       // Does this need parseFloat()?
       this.setState({center: {lat: crd.latitude, lng: crd.longitude}})
       this.setState({defualtCenter: {lat: crd.latitude, lng: crd.longitude}})
