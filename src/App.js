@@ -105,7 +105,7 @@ class App extends Component {
   searchVenues = (near, query, limit) => {
     SquareAPI.search({
       near: near.city,
-      // ll: 44.32, 37.22, 
+      // ll: 44.32, 37.22, // Foursquare docs say ll can be used but it doesn't work for me https://developer.foursquare.com/docs/api/venues/search
       query: query,
       limit: limit
     }).then(res => {
