@@ -105,14 +105,14 @@ class App extends Component {
   searchVenues = (query, limit) => {
     SquareAPI.search({
       // This works
-      near: "Nashville, TN",
+      // near: "Nashville, TN",
       // Foursquare docs say ll can be used but it doesn't work for me https://developer.foursquare.com/docs/api/venues/search
-      // ll: "36.04,-86.74",
+      ll: "36.04,-86.74",
       query: query,
       limit: limit
     }).then(res => {
       const { venues } = res.response;
-      const { center } = res.response.geocode.feature.geometry;
+      const center = {lat:36.04, lng:-86.74};
       const markers = venues.map(venue => {
         return {
           lat: venue.location.lat,
