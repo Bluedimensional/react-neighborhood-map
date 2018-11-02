@@ -9,11 +9,11 @@ const MyMapComponent = withScriptjs(
 		<GoogleMap
 			defaultZoom={8}
 			zoom={props.zoom}
-			defaultCenter={props.defaultCenter}
-			// center={{
-			// 	lat: parseFloat(props.center.lat),
-			// 	lng: parseFloat(props.center.lng)
-			// }}
+			// defaultCenter={props.defaultCenter}
+			center={{
+				lat: parseFloat(props.center.lat),
+				lng: parseFloat(props.center.lng)
+			}}
 		>
 			{props.markers &&
 				props.markers.filter(marker => marker.isVisible).map((marker, idx, arr) => {

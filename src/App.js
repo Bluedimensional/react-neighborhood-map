@@ -104,7 +104,8 @@ class App extends Component {
   // Search query to Foursquare API
   searchVenues = (near, query, limit) => {
     SquareAPI.search({
-      near: near,
+      near: near.city,
+      // ll: 44.32, 37.22, 
       query: query,
       limit: limit
     }).then(res => {
@@ -129,7 +130,7 @@ class App extends Component {
   // After mount of App component
   componentDidMount() {
     // Pass these into Foursquare search query above
-    this.searchVenues("Nashville, TN", "juice+coffee", "10");
+    this.searchVenues({city: "Nashville, TN"}, "juice+coffee", "10");
 
     // Geolocation snippet based on MDN's example
     const options = {
@@ -146,8 +147,9 @@ class App extends Component {
       console.log(`Latitude : ${crd.latitude}`);
       console.log(`Longitude: ${crd.longitude}`);
       console.log(`More or less ${crd.accuracy} meters.`);
-
-      this.setState({defaultCenter: {lat: crd.latitude, lng: crd.longitude}})
+      // Does this need parseFloat()?
+      this.setState({center: {lat: crd.latitude, lng: crd.longitude}})
+      this.setState({defualtCenter: {lat: crd.latitude, lng: crd.longitude}})
     }
     
     function error(err) {
