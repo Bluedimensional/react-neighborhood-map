@@ -7,7 +7,7 @@ import ErrorBoundary from "../helpers/errorBoundaries"
 const MyMapComponent = withScriptjs(
 	withGoogleMap(props => (
 		<GoogleMap
-			defaultZoom={8}
+			defaultZoom={4}
 			zoom={props.zoom}
 			// defaultCenter={props.defaultCenter}
 			center={{
