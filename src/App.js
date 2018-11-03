@@ -54,7 +54,7 @@ class App extends Component {
       markers: [],
       center: [],
       defaultCenter: [],
-      zoom: 14,
+      zoom: 11,
       googleMapURL: `${googleMapsAPI.url}${googleAPI.googleMaps.params}`,
       updateSuperState: obj => {
         this.setState(obj);
@@ -100,16 +100,42 @@ class App extends Component {
   // Search query to Foursquare API
   searchVenues = (query, limit) => {
     SquareAPI.search({
+
       // This works
-      // near: "Nashville, TN",
+      // near: "Nashville, TN", // for Markers
       ll: "36.04,-86.74",
+      // ll: {lat: success.crd.latitude, lng: success.crd.longitude},
       // ll: {lat: crd.latitude, lng: crd.longitude},
       query: query,
       limit: limit
     }).then(res => {
-      const { venues } = res.response;
-      const center = { lat: 36.04, lng: -86.74 };
-      console.log("test");
+      // Geolocation snippet based on MDN's example
+      const options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+      };
+
+      // Success function for current position
+      const success = (pos) => {
+        const crd = pos.coords;
+        console.log('Your current position is:');
+        console.log(`Lat: ${crd.latitude} Lng: ${crd.longitude}`);
+
+        this.setState({ center: { lat: crd.latitude, lng: crd.longitude } })
+        this.setState({ defualtCenter: { lat: crd.latitude, lng: crd.longitude } })
+      }
+
+      function error(err) {
+        console.warn(`ERROR(${err.code}): ${err.message}`);
+      }
+
+      navigator.geolocation.getCurrentPosition(success, error, options);
+
+      // About to call setState using these values
+      const { venues } = res.response; // Sets venues to API data
+      const center = { lat: 36.04, lng: -86.74 }; // for map view (?)
+      // const center = {  lat: `${success.crd.latitude}`, lng: `${success.crd.longitude}`}; // Throws API error, not in console
       const markers = venues.map(venue => {
         return {
           lat: venue.location.lat,
@@ -119,7 +145,7 @@ class App extends Component {
           id: venue.id
         };
       })
-      this.setState({ venues, center, markers });
+      this.setState({ venues, center, markers }); // Sets state which is passed down to Map component
       // Error for foursquare API call failure
     }).catch(error => {
       // pass error message(s) to handelError()
@@ -131,32 +157,9 @@ class App extends Component {
     // Pass these into Foursquare search query above
     this.searchVenues("juice+coffee", "25");
 
-    // Geolocation snippet based on MDN's example
-    const options = {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0
-    };
-
-    // Success function for current position
-    const success = (pos) => {
-      const crd = pos.coords;
-
-      console.log('Your current position is:');
-      console.log(`Lat: ${crd.latitude}`);
-      console.log(`Lng: ${crd.longitude}`);
-
-      this.setState({ center: { lat: crd.latitude, lng: crd.longitude } })
-      this.setState({ defualtCenter: { lat: crd.latitude, lng: crd.longitude } })
-    }
-
-    function error(err) {
-      console.warn(`ERROR(${err.code}): ${err.message}`);
-    }
-
-    navigator.geolocation.getCurrentPosition(success, error, options);
 
   }
+
 
   render() {
     return (
