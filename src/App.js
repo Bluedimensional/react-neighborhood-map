@@ -103,7 +103,7 @@ class App extends Component {
 
       // This works
       // near: "Nashville, TN", // for Markers
-      ll: "36.04,-86.74",
+      ll: this.state.geo || "36.04,-86.74",
       // ll: {lat: success.crd.latitude, lng: success.crd.longitude},
       // ll: {lat: crd.latitude, lng: crd.longitude},
       query: query,
@@ -133,56 +133,21 @@ class App extends Component {
     })
   }
   // After mount of App component
-  componentDidMount() {
+  componentDidMount = () => {
     // Pass these into Foursquare search query above
     this.searchVenues("juice+coffee", "25");
 
-     // Geolocation snippet based on MDN's example
-      // const options = {
-      //   enableHighAccuracy: true,
-      //   timeout: 5000,
-      //   maximumAge: 0
-      // };
+    // Try HTML5 geolocation
+     navigator.geolocation.getCurrentPosition(function(position) {
+       var pos = {
+         lat: position.coords.latitude,
+         lng: position.coords.longitude
+       };
+       
+       console.log(pos)
+       this.setState({geo: `${pos.lat},${pos.lng}`})
+     });
 
-      // Success function for current position
-      // const success = (pos) => {
-      //   const crd = pos.coords;
-      //   console.log('Your current position is:');
-      //   console.log(`Lat: ${crd.latitude} Lng: ${crd.longitude}`);
-
-      //   // Why do i need these two lines?
-      //   this.setState({ center: { lat: crd.latitude, lng: crd.longitude } })
-      //   this.setState({ defualtCenter: { lat: crd.latitude, lng: crd.longitude } })
-      // }
-
-      // // function error(err) {
-      // //   console.warn(`ERROR(${err.code}): ${err.message}`);
-      // // }
-
-      // const error = (err) => {
-      //   console.warn(`ERROR(${err.code}): ${err.message}`);
-      // }
-
-      // navigator.geolocation.getCurrentPosition(success, error);
-
-       // Try HTML5 geolocation.
-        navigator.geolocation.getCurrentPosition(function(position) {
-          var pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-          
-          console.log(pos)
-
-          // infoWindow.setPosition(pos);
-          // infoWindow.setContent('Location found.');
-          // infoWindow.open(map);
-          // map.setCenter(pos);
-        }, function() {
-          // handleLocationError(true, infoWindow, map.getCenter());
-          // this.searchVenues("juice+coffee", "25");
-        });
-      
 
   }
 
