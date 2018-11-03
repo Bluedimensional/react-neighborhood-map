@@ -101,7 +101,6 @@ class App extends Component {
   searchVenues = (query, limit) => {
     SquareAPI.search({
 
-      // This works
       // near: "Nashville, TN", // for Markers
       ll: this.state.geo || "36.04,-86.74",
       // ll: {lat: success.crd.latitude, lng: success.crd.longitude},
@@ -109,6 +108,16 @@ class App extends Component {
       query: query,
       limit: limit,
     }).then(res => {
+      // Try HTML5 geolocation
+      navigator.geolocation.getCurrentPosition(function (position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        
+        // this.setState({ geo: `${pos.lat},${pos.lng}` })
+        console.log(pos)
+      });
 
 
 
@@ -136,18 +145,6 @@ class App extends Component {
   componentDidMount = () => {
     // Pass these into Foursquare search query above
     this.searchVenues("juice+coffee", "25");
-
-    // Try HTML5 geolocation
-     navigator.geolocation.getCurrentPosition(function(position) {
-       var pos = {
-         lat: position.coords.latitude,
-         lng: position.coords.longitude
-       };
-       
-       console.log(pos)
-       this.setState({geo: `${pos.lat},${pos.lng}`})
-     });
-
 
   }
 
