@@ -2,7 +2,6 @@
  * React-based map listing Juice and Coffee venues in Nashville, TN, utilizing Foursquare and Google Maps APIs.
  *
  * Acknowledgements to Forrest Walker for his YouTube walkthrough: https://goo.gl/XrrXg9
- * 
  */
 
 import React, { Component } from "react";
@@ -31,7 +30,7 @@ const alertMessage = (alertString) => {
   newAlert.setAttribute("role", "alert")
   document.getElementById("navbar").appendChild(newAlert);
   newAlert.innerHTML = alertString;
-  
+
 }
 
 // Google Maps API
@@ -82,9 +81,9 @@ class App extends Component {
 
     SquareAPI.getVenueDetails(marker.id)
       .then(res => {
-      const newVenue = Object.assign(venue, res.response.venue);
-      this.setState({ venues: Object.assign(this.state.venues, newVenue) })
-    });
+        const newVenue = Object.assign(venue, res.response.venue);
+        this.setState({ venues: Object.assign(this.state.venues, newVenue) })
+      });
   };
   // Function to handle list item click
   handleListItemClick = venue => {
@@ -103,13 +102,14 @@ class App extends Component {
     SquareAPI.search({
       // This works
       // near: "Nashville, TN",
-      // Foursquare docs say ll can be used but it doesn't work for me https://developer.foursquare.com/docs/api/venues/search
       ll: "36.04,-86.74",
+      // ll: {lat: crd.latitude, lng: crd.longitude},
       query: query,
       limit: limit
     }).then(res => {
       const { venues } = res.response;
-      const center = {lat:36.04, lng:-86.74};
+      const center = { lat: 36.04, lng: -86.74 };
+      console.log("test");
       const markers = venues.map(venue => {
         return {
           lat: venue.location.lat,
@@ -137,29 +137,27 @@ class App extends Component {
       timeout: 5000,
       maximumAge: 0
     };
-    
+
     // Success function for current position
     const success = (pos) => {
       const crd = pos.coords;
-      
+
       console.log('Your current position is:');
       console.log(`Lat: ${crd.latitude}`);
       console.log(`Lng: ${crd.longitude}`);
-      // Does this need parseFloat()?
-      this.setState({center: {lat: crd.latitude, lng: crd.longitude}})
-      this.setState({defualtCenter: {lat: crd.latitude, lng: crd.longitude}})
+
+      this.setState({ center: { lat: crd.latitude, lng: crd.longitude } })
+      this.setState({ defualtCenter: { lat: crd.latitude, lng: crd.longitude } })
     }
-    
+
     function error(err) {
       console.warn(`ERROR(${err.code}): ${err.message}`);
     }
-    
+
     navigator.geolocation.getCurrentPosition(success, error, options);
 
-    // console.log(`${crd.latitude}`)
   }
 
-  
   render() {
     return (
       <div className="App container-fluid">
@@ -168,9 +166,9 @@ class App extends Component {
           <SideBar {...this.state} handleListItemClick={this.handleListItemClick} />
           <div className="col full-height">
             <ErrorBoundary>
-              <Map 
-                role="complementary" 
-                aria-label="map" 
+              <Map
+                role="complementary"
+                aria-label="map"
                 {...this.state}
                 closeAllMarkers={this.closeAllMarkers}
                 handleMarkerClick={this.handleMarkerClick} />
