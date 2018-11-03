@@ -55,7 +55,7 @@ class App extends Component {
       markers: [],
       center: [],
       defaultCenter: [],
-      zoom: 12,
+      zoom: 14,
       googleMapURL: `${googleMapsAPI.url}${googleAPI.googleMaps.params}`,
       updateSuperState: obj => {
         this.setState(obj);
