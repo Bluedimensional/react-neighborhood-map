@@ -31,13 +31,16 @@ const MyMapComponent = withScriptjs(
 								venueInfo.bestPhoto && (
 									<InfoWindow onCloseClick={() => props.closeAllMarkers()}>
 										<React.Fragment>
-											<img className="venue-image"src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`} alt={venueInfo.name} />
+											<img className="img-fluid venue-image"src={`${venueInfo.bestPhoto.prefix}200x200${venueInfo.bestPhoto.suffix}`} alt={venueInfo.name} />
 											<h4 className="venue-name">{venueInfo.name}</h4>
+											<p>{venueInfo.categories.name}</p>
 											<p className="venue-address"> {venueInfo.location['address']}</p>
-											<p className="venue-address">{venueInfo.contact['phone']}</p>
+											<p className="venue-phone"><a href={"tel:" + venueInfo.contact['phone']}>{venueInfo.contact['phone']}</a></p>
+											<p><a href={"http://instagram.com/" + venueInfo.contact['instagram']}>Instagram</a></p>
+											<p><a href={"http://facebook.com/" + venueInfo.contact['facebook']}>Facebook</a></p>
 											{venueInfo.rating && <p className="venue-rating"> Rating: {venueInfo.rating}</p>}
 											{venueInfo.price && <p className="venue-price"> Price: {venueInfo.price['message']}</p>}
-											<p className="venue-url"><a href="{venueInfo.url}">Website</a></p>
+											<p className="venue-url"><a href={venueInfo.url}>Website</a></p>
 											{/* <p> {venueInfo.categories[]}</p> */}
 										</React.Fragment>
 									</InfoWindow>

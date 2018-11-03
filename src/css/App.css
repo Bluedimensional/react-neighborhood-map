@@ -142,6 +142,13 @@ footer .col-sm-4 {
 
 .venue-image {
   margin: 15px 5px;
+  width: 100px;
+}
+
+@media screen and (max-width: 576px) {
+  .venue-image {
+    width: 100px;
+  }
 }
 
 .venue-price {

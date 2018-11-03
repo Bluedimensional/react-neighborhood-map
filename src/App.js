@@ -19,9 +19,6 @@ import Footer from "./component/Footer"
 import * as googleMapsAPI from "./data/API_credentials";
 import ErrorBoundary from "./helpers/errorBoundaries"
 
-// Geolocation - snippet from MDN
-
-
 // Detect authentication failure, such as invalied or missing Google Maps API key
 window.gm_authFailure = () => {
   alertMessage("Google Maps API error")
@@ -58,7 +55,7 @@ class App extends Component {
       markers: [],
       center: [],
       defaultCenter: [],
-      zoom: 14,
+      zoom: 12,
       googleMapURL: `${googleMapsAPI.url}${googleAPI.googleMaps.params}`,
       updateSuperState: obj => {
         this.setState(obj);
@@ -132,7 +129,7 @@ class App extends Component {
   // After mount of App component
   componentDidMount() {
     // Pass these into Foursquare search query above
-    this.searchVenues("juice+coffee", "10");
+    this.searchVenues("juice+coffee", "25");
 
     // Geolocation snippet based on MDN's example
     const options = {
