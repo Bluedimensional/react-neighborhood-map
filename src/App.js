@@ -114,11 +114,9 @@ class App extends Component {
           lng: position.coords.longitude
         };
 
-        this.setState({ geo: `${pos.lat},${pos.lng}` })
+        // this.setState({ geo: `${pos.lat},${pos.lng}` }) // Throws error: `this` is undefined
         console.log(pos)
       });
-
-
 
       // About to call setState using these values
       const { venues } = res.response; // Sets venues to API data
