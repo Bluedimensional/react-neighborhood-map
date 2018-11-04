@@ -30,10 +30,9 @@ const alertMessage = (alertString) => {
   newAlert.setAttribute("role", "alert")
   document.getElementById("navbar").appendChild(newAlert);
   newAlert.innerHTML = alertString;
-
 }
 
-// Google Maps API
+// Google Maps API key and url
 const googleAPI = {
   googleMaps: {
     // `params` attribute allows us to string multiple query together
@@ -85,22 +84,22 @@ class App extends Component {
         this.setState({ venues: Object.assign(this.state.venues, newVenue) })
       });
   };
+
   // Function to handle list item click
   handleListItemClick = venue => {
     const marker = this.state.markers.find(marker => marker.id === venue.id)
     this.handleMarkerClick(marker)
-  }
+  };
 
   // Function to handle error from Foursquare
   handleError = (error) => {
     this.setState({ error })
     alertMessage("Foursquare API error")
-  }
+  };
 
   // Search query to Foursquare API
   searchVenues = (query, limit) => {
     SquareAPI.search({
-
       // near: "Nashville, TN", // for Markers
       ll: this.state.geo || "36.04,-86.74",
       // ll: {lat: success.crd.latitude, lng: success.crd.longitude},
@@ -114,8 +113,8 @@ class App extends Component {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-        
-        // this.setState({ geo: `${pos.lat},${pos.lng}` })
+
+        this.setState({ geo: `${pos.lat},${pos.lng}` })
         console.log(pos)
       });
 
@@ -134,19 +133,19 @@ class App extends Component {
           id: venue.id
         };
       })
-      this.setState({ venues, center, markers }); // Sets state which is passed down to Map component
+      this.setState({ venues, center, markers }); // Sets state which is passed down to Map (?)component
       // Error for foursquare API call failure
     }).catch(error => {
       // pass error message(s) to handelError()
       this.handleError(error)
     })
-  }
+  };
   // After mount of App component
   componentDidMount = () => {
     // Pass these into Foursquare search query above
     this.searchVenues("juice+coffee", "25");
 
-  }
+  };
 
 
   render() {

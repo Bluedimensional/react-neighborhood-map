@@ -64,7 +64,7 @@ export default class Map extends Component {
 					{...this.props}
 					isMarkerShown
 					loadingElement={<div style={{ height: `100%` }} />}
-					containerElement={<div className="col" style={{ height: `100%`, width: `100%` }} />}
+					containerElement={<div style={{ height: `100%`, width: `100%` }} />}
 					mapElement={<div style={{ height: `100%` }} />}
 					/>
 				</ErrorBoundary>
