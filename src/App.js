@@ -17,31 +17,9 @@ import Navbar from "./component/Navbar"
 import Footer from "./component/Footer"
 import * as googleMapsAPI from "./data/API_credentials";
 import ErrorBoundary from "./helpers/errorBoundaries"
+import { alertMessage, googleAPI } from "./helpers/alertMessage.js"
 
-// Detect authentication failure, such as invalied or missing Google Maps API key
-window.gm_authFailure = () => {
-  alertMessage("Google Maps API error")
-}
 
-// Needs const since it is in global scope
-const alertMessage = (alertString) => {
-  const newAlert = document.createElement("div");
-  newAlert.setAttribute("class", "alert alert-warning")
-  newAlert.setAttribute("role", "alert")
-  document.getElementById("navbar").appendChild(newAlert);
-  newAlert.innerHTML = alertString;
-}
-
-// Google Maps API key and url
-const googleAPI = {
-  googleMaps: {
-    // `params` attribute allows us to string multiple query together
-    params: new URLSearchParams({
-      // API stored in separate file
-      key: `${googleMapsAPI.key}`,
-    })
-  },
-}
 
 // Map component
 class App extends Component {
@@ -114,7 +92,7 @@ class App extends Component {
           lng: position.coords.longitude
         };
 
-        // this.setState({ geo: `${pos.lat},${pos.lng}` }) // Throws error: `this` is undefined
+        // this.setState({ geo: `${pos.lat},${pos.lng}` }) // Throws error: `this` is
         console.log(pos)
       });
 
@@ -142,9 +120,7 @@ class App extends Component {
   componentDidMount = () => {
     // Pass these into Foursquare search query above
     this.searchVenues("juice+coffee", "25");
-
   };
-
 
   render() {
     return (
