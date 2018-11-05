@@ -38,6 +38,7 @@ class App extends Component {
       }
     };
   }
+  
   // Function to close all markers
   closeAllMarkers = () => {
     // Map over each marker and set isOpen to false
@@ -78,23 +79,15 @@ class App extends Component {
   // Search query to Foursquare API
   searchVenues = (query, limit) => {
     SquareAPI.search({
-      // near: "Nashville, TN", // for Markers
-      ll: this.state.geo || "36.04,-86.74",
+      // TODO: get lat lng from geo
+      // ll: this.state.geo || "36.04,-86.74",
+      // ll: this.state.geo || "",
       // ll: {lat: success.crd.latitude, lng: success.crd.longitude},
       // ll: {lat: crd.latitude, lng: crd.longitude},
       query: query,
       limit: limit,
     }).then(res => {
-      // Try HTML5 geolocation
-      navigator.geolocation.getCurrentPosition((position) => {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
-
-        this.setState({ geo: `${pos.lat},${pos.lng}` }) // Throws error: `this` is
-        console.log(pos)
-      });
+      
 
       // About to call setState using these values
       const { venues } = res.response; // Sets venues to API data
