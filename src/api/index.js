@@ -3,7 +3,7 @@
 *
 */
 import * as fsAPI from "../data/API_credentials";
-import {userGeo} from "../component/Geolocation"
+import {lat1, lng1, userGeo} from "../component/Geolocation"
 
 class Helper {
 	static baseURL() {
@@ -16,12 +16,19 @@ class Helper {
 			client_secret: `${fsAPI.client_secret}`,
 			v: `${fsAPI.client_version}`,
 			// Trying to get data from {userGeo} 
-			ll: `${userGeo.pos.lat}` + "," + `${userGeo.pos.lng}` 
+			// ll: `${userGeo.pos.lat}` + "," + `${userGeo.pos.lng}` 
+			// Line below works
 			// ll: "36.04,-86.74"
+			// Values coming from helper file
+			ll:`${lat1},${lng1}`
 		}
 		return Object.keys(keys).map(key => `${key}=${keys[key]}`)
 		.join("&");
+
+		
 	}
+
+	
 
 	static urlBuilder(urlPrams){
 		if(!urlPrams){
@@ -64,3 +71,6 @@ export default class SquareAPI {
 		return Helper.simpleFetch(`/venues/${VENUE_ID}/photos`, "GET");
 	}
 }
+
+
+   

@@ -38,7 +38,7 @@ class App extends Component {
       }
     };
   }
-  
+
   // Function to close all markers
   closeAllMarkers = () => {
     // Map over each marker and set isOpen to false
@@ -87,7 +87,7 @@ class App extends Component {
       query: query,
       limit: limit,
     }).then(res => {
-      
+
 
       // About to call setState using these values
       const { venues } = res.response; // Sets venues to API data
@@ -113,7 +113,9 @@ class App extends Component {
   componentDidMount = () => {
     // Pass these into Foursquare search query above
     this.searchVenues("juice+coffee", "25");
+
   };
+
 
   render() {
     return (

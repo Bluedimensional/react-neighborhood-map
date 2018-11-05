@@ -10,3 +10,6 @@ export const userGeo = navigator.geolocation.getCurrentPosition((position) => {
     console.log("Lat: " + pos.lat) // works
 });
 
+// These values need to be set to the  lat: position.coords.latitude,  lng: position.coords.longitude from above 
+export const lat1 = "36.04"
+export const lng1 = "-86.74"
