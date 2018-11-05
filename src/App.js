@@ -86,13 +86,13 @@ class App extends Component {
       limit: limit,
     }).then(res => {
       // Try HTML5 geolocation
-      navigator.geolocation.getCurrentPosition(function (position) {
+      navigator.geolocation.getCurrentPosition((position) => {
         var pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
 
-        // this.setState({ geo: `${pos.lat},${pos.lng}` }) // Throws error: `this` is
+        this.setState({ geo: `${pos.lat},${pos.lng}` }) // Throws error: `this` is
         console.log(pos)
       });
 
