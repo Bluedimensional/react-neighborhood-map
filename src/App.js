@@ -103,6 +103,7 @@ class App extends Component {
         };
       })
       this.setState({ venues, center, markers }); // Sets state which is passed down to Map (?)component
+      console.log(res);
       // Error for foursquare API call failure
     }).catch(error => {
       // pass error message(s) to handelError()
