@@ -11,13 +11,14 @@ class Helper {
 	}
 	// Client ID, client secret, and version stored in credentials file
 	static auth() {
+		// gets geolocation
 		return getUserGeo()
 			.then(position => {
 				const keys = {
 					client_id: `${fsAPI.client_id}`,
 					client_secret: `${fsAPI.client_secret}`,
 					v: `${fsAPI.client_version}`,
-					ll: `${position.coords.latitude} + "," + ${position.coords.longitude}`
+					// ll: `${position.coords.latitude} + "," + ${position.coords.longitude}`
 				};
 				console.log(position.coords.latitude)
 				// console.log(Helper.simpleFetch())
@@ -49,6 +50,8 @@ class Helper {
 			method,
 			headers: Helper.headers()
 		};
+
+		// this needs to be called after promise resolves in Helper.auth()
 		return fetch(`${Helper.baseURL()}${endPoint}?${Helper.auth()}&${Helper.urlBuilder(urlPrams)}`,
 			requestData
 		).then(res => res.json());
